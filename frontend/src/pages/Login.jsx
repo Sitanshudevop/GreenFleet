@@ -9,22 +9,11 @@ const Login = ({ setToken }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      // Mocking real backend login if it's down, but trying real first
-      try {
-        const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/auth/login', { email, password });
-        localStorage.setItem('token', res.data.access_token);
-        setToken(res.data.access_token);
-      } catch(err) {
-        if (password === 'demo123') {
-           localStorage.setItem('token', 'mock-token');
-           setToken('mock-token');
-        } else {
-           setError('Invalid credentials');
-        }
-      }
-    } catch (err) {
-      setError('An error occurred during login');
+    if (password === 'demo123') {
+       localStorage.setItem('token', 'mock-token');
+       setToken('mock-token');
+    } else {
+       setError('Invalid credentials');
     }
   };
 

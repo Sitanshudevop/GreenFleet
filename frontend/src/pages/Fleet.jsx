@@ -8,20 +8,12 @@ const Fleet = () => {
 
   useEffect(() => {
     const fetchVehicles = async () => {
-      try {
-        const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/vehicles');
-        setVehicles(res.data);
-      } catch (err) {
-        console.error(err);
-        // Fallback
-        setVehicles([
-          {vehicle_id: "GF-101", registration_number: "MH-12-AB-1234", vehicle_type: "Heavy Truck", fuel_type: "Diesel", status: "Active", risk_score: 12.5, current_location: "Mumbai", health: "Good"},
-          {vehicle_id: "GF-102", registration_number: "MH-14-CD-5678", vehicle_type: "Medium Truck", fuel_type: "CNG", status: "Active", risk_score: 8.0, current_location: "Pune", health: "Excellent"},
-          {vehicle_id: "GF-104", registration_number: "CG-04-GH-3456", vehicle_type: "Heavy Truck", fuel_type: "Diesel", status: "Maintenance", risk_score: 65.0, current_location: "Nagpur", health: "Maintenance Required"}
-        ]);
-      } finally {
-        setLoading(false);
-      }
+      setVehicles([
+        {vehicle_id: "GF-101", registration_number: "MH-12-AB-1234", vehicle_type: "Heavy Truck", fuel_type: "Diesel", status: "Active", risk_score: 12.5, current_location: "Mumbai", health: "Good"},
+        {vehicle_id: "GF-102", registration_number: "MH-14-CD-5678", vehicle_type: "Medium Truck", fuel_type: "CNG", status: "Active", risk_score: 8.0, current_location: "Pune", health: "Excellent"},
+        {vehicle_id: "GF-104", registration_number: "CG-04-GH-3456", vehicle_type: "Heavy Truck", fuel_type: "Diesel", status: "Maintenance", risk_score: 65.0, current_location: "Nagpur", health: "Maintenance Required"}
+      ]);
+      setLoading(false);
     };
     fetchVehicles();
   }, []);

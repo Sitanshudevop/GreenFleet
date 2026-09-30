@@ -7,15 +7,10 @@ const Alerts = () => {
 
   useEffect(() => {
     const fetchAlerts = async () => {
-      try {
-        const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/alerts');
-        setAlerts(res.data);
-      } catch (err) {
-        setAlerts([
-          {id: 1, vehicle_id: 4, type: "Fuel Theft", severity: "CRITICAL", message: "Abnormal fuel drop of 8.7L detected. Expected drop: 2.1L. Possible leak or theft.", timestamp: new Date().toISOString(), is_resolved: false},
-          {id: 2, vehicle_id: 1, type: "Idling", severity: "MEDIUM", message: "Excessive idling detected (15+ mins).", timestamp: new Date().toISOString(), is_resolved: false},
-        ]);
-      }
+      setAlerts([
+        {id: 1, vehicle_id: "GF-104", type: "Fuel Theft", severity: "CRITICAL", message: "Abnormal fuel drop of 8.7L detected. Expected drop: 2.1L. Possible leak or theft.", timestamp: new Date().toISOString(), is_resolved: false},
+        {id: 2, vehicle_id: "GF-101", type: "Idling", severity: "MEDIUM", message: "Excessive idling detected (15+ mins).", timestamp: new Date().toISOString(), is_resolved: false},
+      ]);
     };
     fetchAlerts();
   }, []);

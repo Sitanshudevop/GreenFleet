@@ -61,28 +61,17 @@ const Dashboard = () => {
   const [alerts, setAlerts] = useState([]);
 
   useEffect(() => {
-    // Attempt to fetch from backend, use mock if it fails
     const fetchData = async () => {
-      try {
-        const vRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/vehicles');
-        setVehicles(vRes.data);
-      } catch (err) {
-        console.log("Backend not reachable for vehicles, using mock data");
-        setVehicles([
-            {vehicle_id: "GF-101", status: "Active"},
-            {vehicle_id: "GF-102", status: "Active"},
-            {vehicle_id: "GF-103", status: "In Transit"},
-        ]);
-      }
-      try {
-        const aRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/alerts');
-        setAlerts(aRes.data);
-      } catch (err) {
-        setAlerts([
-          {type: "Fuel Theft", severity: "CRITICAL", message: "Abnormal fuel drop of 8.7L detected."},
-          {type: "Idling", severity: "MEDIUM", message: "Excessive idling detected (15+ mins)."}
-        ]);
-      }
+      setVehicles([
+          {vehicle_id: "GF-101", status: "Active"},
+          {vehicle_id: "GF-102", status: "Active"},
+          {vehicle_id: "GF-103", status: "In Transit"},
+          {vehicle_id: "GF-104", status: "Maintenance"}
+      ]);
+      setAlerts([
+        {type: "Fuel Theft", severity: "CRITICAL", message: "Abnormal fuel drop of 8.7L detected."},
+        {type: "Idling", severity: "MEDIUM", message: "Excessive idling detected (15+ mins)."}
+      ]);
     };
     fetchData();
   }, []);
