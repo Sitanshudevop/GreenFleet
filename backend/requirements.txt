@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+pydantic
+sqlalchemy
+xgboost
+scikit-learn
+pandas
+numpy
+ortools
+pyjwt
+passlib[bcrypt]
+python-dotenv
+python-multipart
