@@ -12,7 +12,7 @@ const Login = ({ setToken }) => {
     try {
       // Mocking real backend login if it's down, but trying real first
       try {
-        const res = await axios.post('http://localhost:8000/auth/login', { email, password });
+        const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/auth/login', { email, password });
         localStorage.setItem('token', res.data.access_token);
         setToken(res.data.access_token);
       } catch(err) {

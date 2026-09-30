@@ -8,7 +8,7 @@ const Alerts = () => {
   useEffect(() => {
     const fetchAlerts = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/alerts');
+        const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/alerts');
         setAlerts(res.data);
       } catch (err) {
         setAlerts([

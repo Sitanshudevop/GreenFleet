@@ -64,7 +64,7 @@ const Dashboard = () => {
     // Attempt to fetch from backend, use mock if it fails
     const fetchData = async () => {
       try {
-        const vRes = await axios.get('http://localhost:8000/vehicles');
+        const vRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/vehicles');
         setVehicles(vRes.data);
       } catch (err) {
         console.log("Backend not reachable for vehicles, using mock data");
@@ -75,7 +75,7 @@ const Dashboard = () => {
         ]);
       }
       try {
-        const aRes = await axios.get('http://localhost:8000/alerts');
+        const aRes = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/alerts');
         setAlerts(aRes.data);
       } catch (err) {
         setAlerts([

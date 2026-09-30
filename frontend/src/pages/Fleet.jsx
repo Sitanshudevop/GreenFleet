@@ -9,7 +9,7 @@ const Fleet = () => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        const res = await axios.get('http://localhost:8000/vehicles');
+        const res = await axios.get((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/vehicles');
         setVehicles(res.data);
       } catch (err) {
         console.error(err);

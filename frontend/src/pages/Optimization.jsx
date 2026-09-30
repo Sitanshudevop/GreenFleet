@@ -11,7 +11,7 @@ const Optimization = () => {
   const handleOptimize = async () => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/optimize/route', { origin, destination });
+      const res = await axios.post((import.meta.env.VITE_API_URL || 'http://localhost:8000') + '/optimize/route', { origin, destination });
       setResult(res.data);
     } catch (err) {
       // Mocking fallback

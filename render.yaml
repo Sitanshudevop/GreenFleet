@@ -1,0 +1,22 @@
+services:
+  # Backend FastAPI Service
+  - type: web
+    name: greenfleet-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    
+  # Frontend React Service
+  - type: web
+    name: greenfleet-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: greenfleet-backend
+          envVarKey: RENDER_EXTERNAL_URL
