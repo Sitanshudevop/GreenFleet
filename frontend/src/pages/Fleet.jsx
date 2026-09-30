@@ -39,12 +39,12 @@ const Fleet = () => {
       </div>
 
       <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-slate-200 flex justify-between items-center bg-slate-50">
-          <div className="flex items-center bg-white border border-slate-300 rounded-lg px-3 py-1.5 w-72 focus-within:ring-2 ring-emerald-500/20">
+        <div className="p-4 border-b border-slate-200 flex flex-col md:flex-row justify-between items-start md:items-center bg-slate-50 gap-4">
+          <div className="flex items-center bg-white border border-slate-300 rounded-lg px-3 py-1.5 w-full md:w-72 focus-within:ring-2 ring-emerald-500/20">
             <Search className="w-4 h-4 text-slate-400 mr-2" />
             <input type="text" placeholder="Search vehicle ID or registration..." className="bg-transparent border-none outline-none w-full text-sm text-slate-700" />
           </div>
-          <button className="flex items-center gap-2 text-sm text-slate-600 hover:text-slate-900 font-medium px-3 py-1.5 border border-slate-300 rounded-lg bg-white">
+          <button className="flex justify-center w-full md:w-auto items-center gap-2 text-sm text-slate-600 hover:text-slate-900 font-medium px-3 py-1.5 border border-slate-300 rounded-lg bg-white">
             <Filter className="w-4 h-4" /> Filter
           </button>
         </div>

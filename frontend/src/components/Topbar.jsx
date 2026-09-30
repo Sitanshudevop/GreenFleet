@@ -1,18 +1,23 @@
 import React from 'react';
-import { Bell, Search, Play, Pause, RotateCcw } from 'lucide-react';
+import { Bell, Search, Play, Pause, RotateCcw, Menu } from 'lucide-react';
 
-const Topbar = () => {
+const Topbar = ({ setIsSidebarOpen }) => {
   const [demoMode, setDemoMode] = React.useState(false);
 
   return (
-    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-10">
-      <div className="flex items-center bg-slate-100 rounded-lg px-3 py-2 w-96 focus-within:ring-2 ring-emerald-500/20">
-        <Search className="w-5 h-5 text-slate-400 mr-2" />
-        <input 
-          type="text" 
-          placeholder="Search vehicles, drivers, or routes..." 
-          className="bg-transparent border-none outline-none w-full text-sm text-slate-700"
-        />
+    <header className="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-4 md:px-6 z-10 w-full shrink-0">
+      <div className="flex items-center">
+        <button className="mr-4 md:hidden text-slate-500 hover:text-slate-800" onClick={() => setIsSidebarOpen(true)}>
+          <Menu className="w-6 h-6" />
+        </button>
+        <div className="hidden md:flex items-center bg-slate-100 rounded-lg px-3 py-2 w-48 lg:w-96 focus-within:ring-2 ring-emerald-500/20">
+          <Search className="w-5 h-5 text-slate-400 mr-2" />
+          <input 
+            type="text" 
+            placeholder="Search vehicles, drivers..." 
+            className="bg-transparent border-none outline-none w-full text-sm text-slate-700"
+          />
+        </div>
       </div>
 
       <div className="flex items-center gap-4">

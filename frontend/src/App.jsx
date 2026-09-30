@@ -14,6 +14,7 @@ import { useState } from 'react';
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token'));
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
   if (!token) {
     return <Login setToken={setToken} />;
@@ -21,11 +22,14 @@ function App() {
 
   return (
     <Router>
-      <div className="flex h-screen bg-slate-50 text-slate-900 overflow-hidden font-sans">
-        <Sidebar />
-        <div className="flex-1 flex flex-col overflow-hidden">
-          <Topbar />
-          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 p-6">
+      <div className="flex h-screen bg-slate-50 text-slate-900 overflow-hidden font-sans relative w-full">
+        {isSidebarOpen && (
+          <div className="fixed inset-0 bg-black/50 z-40 md:hidden" onClick={() => setIsSidebarOpen(false)} />
+        )}
+        <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+        <div className="flex-1 flex flex-col overflow-hidden w-full">
+          <Topbar setIsSidebarOpen={setIsSidebarOpen} />
+          <main className="flex-1 overflow-x-hidden overflow-y-auto bg-slate-50 p-4 md:p-6 w-full">
             <Routes>
               <Route path="/" element={<Navigate to="/dashboard" replace />} />
               <Route path="/dashboard" element={<Dashboard />} />

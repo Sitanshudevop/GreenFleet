@@ -126,12 +126,12 @@ const LiveMap = () => {
 
   return (
     <div className="flex flex-col h-[calc(100vh-8rem)]">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Live Fleet Map</h1>
           <p className="text-slate-500 text-sm mt-1">Real-time telemetry and tracking</p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex flex-wrap gap-2 sm:gap-4 w-full sm:w-auto">
            <div className="bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-2">
              <span className="text-sm font-medium text-slate-600">Vehicles:</span>
              <span className="font-bold text-slate-900">{vehicles.length}</span>

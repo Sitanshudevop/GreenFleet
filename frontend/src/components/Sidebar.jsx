@@ -11,7 +11,7 @@ import {
   Users
 } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   const navItems = [
     { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
     { name: 'Fleet', path: '/fleet', icon: Truck },
@@ -24,7 +24,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <div className="w-64 bg-slate-900 text-white flex flex-col h-full border-r border-slate-800">
+    <div className={`w-64 bg-slate-900 text-white flex flex-col h-full border-r border-slate-800 absolute inset-y-0 left-0 z-50 transform md:relative md:translate-x-0 transition duration-200 ease-in-out ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       <div className="p-6 flex items-center gap-3 border-b border-slate-800">
         <Truck className="w-8 h-8 text-emerald-500" />
         <span className="text-xl font-bold tracking-tight">GREENFLEET <span className="text-emerald-500">AI</span></span>
@@ -36,6 +36,7 @@ const Sidebar = () => {
             <NavLink
               key={item.name}
               to={item.path}
+              onClick={() => setIsSidebarOpen(false)}
               className={({ isActive }) => 
                 `flex items-center gap-3 px-3 py-3 rounded-lg transition-colors ${
                   isActive 
